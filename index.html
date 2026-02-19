@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Футбольная секция «Высота» | Главная</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="logo">
+                    ⚽ Высота Футбол
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link active">Главная</a></li>
+                        <li><a href="about.html" class="nav-link">О нас</a></li>
+                        <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <h1>Футбольная секция в Санкт-Петербурге</h1>
+                        <p>Тренировки для детей от 5 лет и взрослых. Крытый манеж, опытные тренеры, участие в турнирах.</p>
+                        <a href="contacts.html" class="btn">Записаться</a>
+                    </div>
+                    <div class="hero-image">
+                        <a href="#img-hero" class="clickable-image">
+                            <img src="images/kids.jpeg" alt="Дети играют в футбол">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Почему выбирают нас</h2>
+                <div class="features-flex">
+                    <div class="feature-card">
+                        <div class="feature-icon">🥅</div>
+                        <h3>Крытый манеж</h3>
+                        <p>Искусственный газон, раздевалки, душевые</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👨‍🏫</div>
+                        <h3>Тренеры с лицензией</h3>
+                        <p>UEFA C и UEFA B, опыт от 10 лет</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>Турниры</h3>
+                        <p>Участвуем в городских соревнованиях</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📍</div>
+                        <h3>Район Пулковское</h3>
+                        <p>Санкт-Петербург, п. Шушары, территория Пулковское, д. 34, лит. А</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="container">
+                <h2 class="section-title">Фотогалерея</h2>
+                <div class="gallery-grid">
+                    <figure class="gallery-item">
+                        <a href="#img1" class="clickable-image">
+                            <img src="images/trenirovka.jpeg" alt="Тренировка детей">
+                        </a>
+                        <figcaption>Тренировка</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <a href="#img2" class="clickable-image">
+                            <img src="images/pole.jpeg" alt="Футбольное поле">
+                        </a>
+                        <figcaption>Наш манеж</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <a href="#img3" class="clickable-image">
+                            <img src="images/shtab.jpeg" alt="Тренерский штаб">
+                        </a>
+                        <figcaption>Тренерский штаб</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <a href="#img4" class="clickable-image">
+                            <img src="images/match.jpeg" alt="Соревнования">
+                        </a>
+                        <figcaption>Турнирные матчи</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="schedule">
+            <div class="container">
+                <h2 class="section-title">Расписание</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Группа</th>
+                                <th>Пн</th>
+                                <th>Ср</th>
+                                <th>Пт</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5–7 лет</td>
+                                <td>15:30–16:30</td>
+                                <td>15:30–16:30</td>
+                                <td>15:30–16:30</td>
+                            </tr>
+                            <tr>
+                                <td>8–11 лет</td>
+                                <td>16:45–18:00</td>
+                                <td>16:45–18:00</td>
+                                <td>16:45–18:00</td>
+                            </tr>
+                            <tr>
+                                <td>12–16 лет</td>
+                                <td>18:15–19:45</td>
+                                <td>18:15–19:45</td>
+                                <td>18:15–19:45</td>
+                            </tr>
+                            <tr>
+                                <td>Взрослые</td>
+                                <td>20:00–21:30</td>
+                                <td>—</td>
+                                <td>20:00–21:30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox модальные окна -->
+    <div id="img-hero" class="lightbox-target">
+        <a href="#" class="lightbox-close">&times;</a>
+        <img src="images/kids.jpeg" alt="Дети играют в футбол">
+    </div>
+    <div id="img1" class="lightbox-target">
+        <a href="#" class="lightbox-close">&times;</a>
+        <img src="images/trenirovka.jpeg" alt="Тренировка детей">
+    </div>
+    <div id="img2" class="lightbox-target">
+        <a href="#" class="lightbox-close">&times;</a>
+        <img src="images/pole.jpeg" alt="Футбольное поле">
+    </div>
+    <div id="img3" class="lightbox-target">
+        <a href="#" class="lightbox-close">&times;</a>
+        <img src="images/shtab.jpeg" alt="Тренерский штаб">
+    </div>
+    <div id="img4" class="lightbox-target">
+        <a href="#" class="lightbox-close">&times;</a>
+        <img src="images/match.jpeg" alt="Соревнования">
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Футбольная секция «Высота»</h3>
+                    <p>Санкт-Петербург, Невский район</p>
+                    <p>© 2026 Все права защищены</p>
+                </div>
+                <div>
+                    <h4>Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Соцсети</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📘</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🎥</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
