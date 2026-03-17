@@ -1,3 +1,43 @@
+// ===== АНИМАЦИЯ НАКРУЧИВАНИЯ ЦЕН =====
+function animatePrice(el) {
+    const text = el.textContent;
+    const match = text.match(/[\d\s]+/);
+    if (!match) return;
+
+    const target = parseInt(match[0].replace(/\s/g, ''), 10);
+    if (!target) return;
+
+    const duration = 900;
+    const start = performance.now();
+
+    function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+        el.textContent = text.replace(/[\d\s]+/, current.toLocaleString('ru-RU') + ' ');
+        if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+}
+
+function initPriceAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const priceEl = entry.target.querySelector('.rent-price');
+                if (priceEl && !priceEl.dataset.animated) {
+                    priceEl.dataset.animated = '1';
+                    animatePrice(priceEl);
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.rent-card').forEach(el => observer.observe(el));
+}
+
 // ===== МОДАЛЬНОЕ ОКНО БРОНИРОВАНИЯ =====
 function openRentModal(title, price) {
     document.getElementById('rent-modal-title').textContent = `Бронирование: ${title}`;
@@ -101,4 +141,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initPhoneMask();
     initRentForm();
+    initPriceAnimations();
 });
