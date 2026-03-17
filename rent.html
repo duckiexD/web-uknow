@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аренда | Футбольная секция «Высота»</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="logo">⚽ Высота Футбол</div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Главная</a></li>
+                        <li><a href="about.html" class="nav-link">О нас</a></li>
+                        <li><a href="lessons.html" class="nav-link">Занятия</a></li>
+                        <li><a href="rent.html" class="nav-link active">Аренда</a></li>
+                        <li><a href="shop.html" class="nav-link">Магазин</a></li>
+                        <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Аренда манежа</h1>
+            </div>
+        </section>
+
+        <section class="rent-section">
+            <div class="container">
+                <h2 class="section-title">Условия аренды</h2>
+                <div class="rent-grid">
+                    <div class="rent-card">
+                        <div class="rent-icon">⏱️</div>
+                        <h3>1 час</h3>
+                        <div class="rent-price">3 500 ₽</div>
+                        <p>Аренда поля на 1 час. Подходит для небольших тренировок и игр.</p>
+                        <button class="btn btn-full rent-book-btn" data-title="Аренда 1 час" data-price="3 500 ₽">Забронировать</button>
+                    </div>
+                    <div class="rent-card rent-card--featured">
+                        <div class="rent-icon">🕐</div>
+                        <h3>2 часа</h3>
+                        <div class="rent-price">6 000 ₽</div>
+                        <p>Аренда поля на 2 часа. Оптимально для полноценной игры или тренировки команды.</p>
+                        <button class="btn btn-full rent-book-btn" data-title="Аренда 2 часа" data-price="6 000 ₽">Забронировать</button>
+                    </div>
+                    <div class="rent-card">
+                        <div class="rent-icon">📅</div>
+                        <h3>Постоянная аренда</h3>
+                        <div class="rent-price">от 20 000 ₽/мес</div>
+                        <p>Фиксированное время каждую неделю. Скидка для постоянных клиентов.</p>
+                        <button class="btn btn-full rent-book-btn" data-title="Постоянная аренда" data-price="от 20 000 ₽/мес">Забронировать</button>
+                    </div>
+                </div>
+
+                <div class="rent-info">
+                    <h2 class="section-title">Что включено</h2>
+                    <div class="rent-features">
+                        <div class="rent-feature">
+                            <span class="rent-feature-icon">🥅</span>
+                            <div>
+                                <h4>Искусственный газон</h4>
+                                <p>Поле с покрытием FIFA Quality</p>
+                            </div>
+                        </div>
+                        <div class="rent-feature">
+                            <span class="rent-feature-icon">🚿</span>
+                            <div>
+                                <h4>Раздевалки и душевые</h4>
+                                <p>Отдельные для каждой команды</p>
+                            </div>
+                        </div>
+                        <div class="rent-feature">
+                            <span class="rent-feature-icon">💡</span>
+                            <div>
+                                <h4>Освещение</h4>
+                                <p>Профессиональное освещение манежа</p>
+                            </div>
+                        </div>
+                        <div class="rent-feature">
+                            <span class="rent-feature-icon">🅿️</span>
+                            <div>
+                                <h4>Парковка</h4>
+                                <p>Бесплатная парковка для арендаторов</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rent-photo">
+                    <a href="#img-rent" class="clickable-image">
+                        <img src="images/pole.jpeg" alt="Футбольный манеж для аренды">
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="img-rent" class="lightbox-target">
+        <a href="#" class="lightbox-close">&times;</a>
+        <img src="images/pole.jpeg" alt="Футбольный манеж">
+    </div>
+
+    <!-- Модальное окно бронирования -->
+    <div id="rent-modal">
+        <div class="gym-modal-inner">
+            <button class="gym-modal-close" id="rent-modal-close">✕</button>
+            <h3 id="rent-modal-title">Бронирование</h3>
+            <p id="rent-modal-subtitle" class="gym-modal-subtitle"></p>
+            <form id="rent-order-form" novalidate>
+                <div class="form-group">
+                    <label for="rent-name">Ваше имя *</label>
+                    <input type="text" id="rent-name" placeholder="Иван Иванов" autocomplete="name">
+                    <div class="field-error" id="rent-name-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="rent-phone">Телефон *</label>
+                    <input type="tel" id="rent-phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" maxlength="18">
+                    <div class="field-error" id="rent-phone-error"></div>
+                </div>
+                <button type="submit" class="btn btn-full">Отправить заявку</button>
+            </form>
+            <div id="rent-success" class="gym-success" style="display:none">
+                ✅ Заявка принята! Мы свяжемся с вами в ближайшее время.
+            </div>
+        </div>
+    </div>
+
+    <script src="js/rent.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Футбольная секция «Высота»</h3>
+                    <p>Санкт-Петербург, Невский район</p>
+                    <p>© 2026 Все права защищены</p>
+                </div>
+                <div>
+                    <h4>Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="lessons.html">Занятия</a></li>
+                        <li><a href="rent.html">Аренда</a></li>
+                        <li><a href="shop.html">Магазин</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Соцсети</h4>
+                    <div class="social-icons">
+                        <a href="https://vk.com/visota.sport" target="_blank" class="social-icon" title="ВКонтакте">🔵</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🎥</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

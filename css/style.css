@@ -19,10 +19,10 @@ main {
 }
 
 .container {
-    width: 100%;  /* Увеличено до 100% */
-    max-width: 1400px;  /* Увеличено с 1200px до 1400px */
+    width: 100%;  
+    max-width: 1400px;  
     margin: 0 auto;
-    padding: 0 2rem;  /* Добавлены отступы только по краям */
+    padding: 0 2rem;  
 }
 
 img {
@@ -198,7 +198,7 @@ img:hover {
     margin-bottom: 2rem;
 }
 
-/* ===== Преимущества (Flexbox) ===== */
+/* ===== Преимущества ===== */
 .features {
     padding: 4rem 0;
 }
@@ -567,7 +567,7 @@ tr:hover td {
     box-shadow: 0 5px 15px rgba(46,125,50,0.4);
 }
 
-/* ===== Адаптивность (Media Queries) ===== */
+/* ===== Адаптивность ===== */
 @media (max-width: 992px) {
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -576,7 +576,7 @@ tr:hover td {
 
 @media (max-width: 768px) {
     .container {
-        padding: 0 1rem;  /* Меньше отступы на мобильных */
+        padding: 0 1rem;  
     }
     
     .header-row {
@@ -701,4 +701,988 @@ tr:hover td {
 
 .clickable-image:hover::after {
     opacity: 1;
+}
+
+/* ===== Прогресс чтения ===== */
+#reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: #2e7d32;
+    z-index: 9998;
+    transition: width 0.1s linear;
+}
+
+/* ===== Кнопка "Наверх" ===== */
+#scroll-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(46,125,50,0.4);
+    transition: all 0.3s;
+}
+
+#scroll-top-btn:hover {
+    background: #1b5e20;
+    transform: translateY(-3px);
+}
+
+/* ===== Уведомление корзины ===== */
+#cart-notification {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #0a3b2e;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    white-space: nowrap;
+}
+
+#cart-notification.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ===== Счётчик корзины в шапке ===== */
+.cart-btn {
+    position: relative;
+    background: none;
+    border: 2px solid #2e7d32;
+    color: #2e7d32;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart-btn:hover {
+    background: #2e7d32;
+    color: white;
+}
+
+#cart-counter {
+    background: #d32f2f;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* ===== Секция каталога ===== */
+.shop {
+    padding: 4rem 0;
+    background: #f8fafc;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #2e7d32;
+    background: white;
+    color: #2e7d32;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #2e7d32;
+    color: white;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    transition: all 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.product-img-wrap {
+    overflow: hidden;
+    height: 200px;
+    cursor: pointer;
+}
+
+.product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    transition: transform 0.3s;
+}
+
+.product-img-wrap:hover img {
+    transform: scale(1.08);
+}
+
+.product-info {
+    padding: 1.2rem;
+}
+
+.product-article {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 0.4rem;
+}
+
+.product-name {
+    font-size: 1rem;
+    color: #0a3b2e;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.product-name:hover {
+    color: #2e7d32;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2e7d32;
+    margin-bottom: 1rem;
+}
+
+.product-btn {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+/* ===== Модальное окно товара ===== */
+#product-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.product-modal-inner {
+    background: white;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.product-modal-img {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 0;
+    width: 100%;
+}
+
+.product-modal-info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.product-modal-info h2 {
+    color: #0a3b2e;
+    font-size: 1.3rem;
+}
+
+.product-modal-article {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.product-modal-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+.product-modal-desc {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.modal-close-btn:hover {
+    background: #d32f2f;
+}
+
+/* ===== Корзина ===== */
+#cart-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.cart-inner {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 550px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.cart-header h2 {
+    color: #0a3b2e;
+}
+
+.cart-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.cart-close:hover {
+    color: #d32f2f;
+}
+
+#cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+}
+
+.cart-empty {
+    text-align: center;
+    color: #999;
+    padding: 2rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: 500;
+    color: #0a3b2e;
+    font-size: 0.95rem;
+}
+
+.cart-item-price {
+    color: #2e7d32;
+    font-weight: 600;
+    margin-top: 0.2rem;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #2e7d32;
+    background: white;
+    color: #2e7d32;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.qty-btn:hover {
+    background: #2e7d32;
+    color: white;
+}
+
+.qty-value {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+.cart-remove {
+    background: none;
+    border: none;
+    color: #d32f2f;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.3rem;
+    transition: transform 0.3s;
+}
+
+.cart-remove:hover {
+    transform: scale(1.2);
+}
+
+.cart-footer {
+    padding: 1.5rem;
+    border-top: 2px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-total-label {
+    font-size: 1.1rem;
+    color: #0a3b2e;
+    font-weight: 600;
+}
+
+#cart-total {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+/* ===== Комментарии ===== */
+.comments-section {
+    padding: 4rem 0;
+    background: #f1f8e9;
+}
+
+.comments-list {
+    margin-bottom: 2rem;
+}
+
+.no-comments {
+    text-align: center;
+    color: #999;
+    padding: 1.5rem;
+}
+
+.comment-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: #0a3b2e;
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.comment-text {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+}
+
+.comment-like {
+    background: none;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.comment-like:hover {
+    border-color: #e53935;
+    color: #e53935;
+    background: #fff5f5;
+}
+
+.comment-form-wrap {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.comment-form-wrap h3 {
+    color: #0a3b2e;
+    margin-bottom: 1.5rem;
+}
+
+.field-error {
+    color: #d32f2f;
+    font-size: 0.82rem;
+    margin-top: 0.3rem;
+    min-height: 1rem;
+}
+
+/* ===== Адаптивность новых элементов ===== */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-modal-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .product-modal-img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Стоимость занятий ===== */
+.pricing-section {
+    padding: 4rem 0;
+    background: #f8fafc;
+}
+
+.pricing-subtitle {
+    text-align: center;
+    color: #475569;
+    margin-top: -1.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.pricing-card {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.3s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #2e7d32;
+}
+
+.pricing-card--featured {
+    border-color: #2e7d32;
+    box-shadow: 0 10px 30px rgba(46,125,50,0.15);
+}
+
+.pricing-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+.pricing-desc {
+    color: #64748b;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.pricing-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0a3b2e;
+}
+
+.pricing-features {
+    list-style: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.pricing-features li {
+    color: #475569;
+    font-size: 0.95rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: center;
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+/* ===== Абонементы на спортзал ===== */
+.gym-section {
+    padding: 4rem 0;
+    background: #f1f8e9;
+}
+
+.gym-cards {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.gym-card {
+    background: white;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    flex: 1 1 150px;
+    transition: all 0.3s;
+}
+
+.gym-card:hover {
+    border-color: #2e7d32;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.gym-card-title {
+    font-size: 1rem;
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+
+.gym-card-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0a3b2e;
+}
+
+/* ===== Аренда ===== */
+.rent-section {
+    padding: 4rem 0;
+}
+
+.rent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.rent-card {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.3s;
+}
+
+.rent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #2e7d32;
+}
+
+.rent-card--featured {
+    border-color: #2e7d32;
+    box-shadow: 0 10px 30px rgba(46,125,50,0.15);
+}
+
+.rent-icon {
+    font-size: 2.5rem;
+}
+
+.rent-card h3 {
+    color: #0a3b2e;
+    font-size: 1.3rem;
+}
+
+.rent-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+.rent-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+    flex: 1;
+}
+
+.rent-info {
+    margin-bottom: 3rem;
+}
+
+.rent-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.rent-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.rent-feature-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.rent-feature h4 {
+    color: #0a3b2e;
+    margin-bottom: 0.3rem;
+}
+
+.rent-feature p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.rent-photo {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ===== Адаптивность новых страниц ===== */
+@media (max-width: 768px) {
+    .pricing-grid,
+    .rent-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rent-features {
+        grid-template-columns: 1fr;
+    }
+
+    .gym-cards {
+        flex-direction: column;
+    }
+}
+
+/* ===== Чекбокс в форме ===== */
+.form-group--checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: #0a3b2e;
+    font-size: 0.95rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #2e7d32;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* ===== Lessons JS стили ===== */
+
+/* Карточки появляются снизу при скролле */
+.pricing-card,
+.gym-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s;
+}
+
+.pricing-card.visible,
+.gym-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Задержка для каждой карточки */
+.pricing-card:nth-child(1) { transition-delay: 0.05s; }
+.pricing-card:nth-child(2) { transition-delay: 0.15s; }
+.pricing-card:nth-child(3) { transition-delay: 0.25s; }
+
+.gym-card:nth-child(1) { transition-delay: 0.05s; }
+.gym-card:nth-child(2) { transition-delay: 0.1s; }
+.gym-card:nth-child(3) { transition-delay: 0.15s; }
+.gym-card:nth-child(4) { transition-delay: 0.2s; }
+.gym-card:nth-child(5) { transition-delay: 0.25s; }
+
+/* Выбранная карточка тарифа */
+.pricing-card--selected {
+    border-color: #2e7d32 !important;
+    box-shadow: 0 0 0 3px rgba(46,125,50,0.2), 0 15px 30px rgba(46,125,50,0.15) !important;
+    cursor: pointer;
+}
+
+.pricing-card {
+    cursor: pointer;
+}
+
+/* Выбранная карточка абонемента */
+.gym-card--selected {
+    border-color: #2e7d32 !important;
+    background: #f1f8e9 !important;
+    box-shadow: 0 0 0 3px rgba(46,125,50,0.2) !important;
+}
+
+.gym-card {
+    cursor: pointer;
+}
+
+/* Тост-уведомление */
+#lessons-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #0a3b2e;
+    color: white;
+    padding: 0.8rem 1.6rem;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+#lessons-toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ===== Кнопка "Оформить" в gym-card ===== */
+.gym-order-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+/* ===== Модальное окно абонемента ===== */
+#gym-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.gym-modal-inner {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.gym-modal-inner h3 {
+    color: #0a3b2e;
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+}
+
+.gym-modal-subtitle {
+    color: #2e7d32;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.gym-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.gym-modal-close:hover {
+    color: #d32f2f;
+}
+
+.gym-success {
+    text-align: center;
+    color: #2e7d32;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 0;
+}
+
+/* ===== Модальное окно аренды (переиспользует стили gym-modal) ===== */
+#rent-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* ===== Фото спортзала в секции абонементов ===== */
+.gym-photo {
+    margin-top: 2.5rem;
+}
+
+.gym-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.gym-gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 600px) {
+    .gym-gallery {
+        grid-template-columns: 1fr;
+    }
 }

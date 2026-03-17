@@ -1,0 +1,104 @@
+// ===== МОДАЛЬНОЕ ОКНО БРОНИРОВАНИЯ =====
+function openRentModal(title, price) {
+    document.getElementById('rent-modal-title').textContent = `Бронирование: ${title}`;
+    document.getElementById('rent-modal-subtitle').textContent = `Стоимость: ${price}`;
+    document.getElementById('rent-success').style.display = 'none';
+    document.getElementById('rent-order-form').style.display = 'block';
+    document.getElementById('rent-name').value = '';
+    document.getElementById('rent-phone').value = '';
+    document.getElementById('rent-name-error').textContent = '';
+    document.getElementById('rent-phone-error').textContent = '';
+    document.getElementById('rent-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeRentModal() {
+    document.getElementById('rent-modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// ===== МАСКА ТЕЛЕФОНА РФ =====
+function initPhoneMask() {
+    const input = document.getElementById('rent-phone');
+    if (!input) return;
+
+    input.addEventListener('input', function () {
+        let val = input.value.replace(/\D/g, '');
+        if (val.startsWith('8')) val = '7' + val.slice(1);
+        if (!val.startsWith('7')) val = '7' + val;
+        val = val.slice(0, 11);
+
+        let result = '+7';
+        if (val.length > 1) result += ' (' + val.slice(1, 4);
+        if (val.length >= 4) result += ') ' + val.slice(4, 7);
+        if (val.length >= 7) result += '-' + val.slice(7, 9);
+        if (val.length >= 9) result += '-' + val.slice(9, 11);
+
+        input.value = result;
+    });
+
+    input.addEventListener('keydown', function (e) {
+        if (e.key === 'Backspace' && input.value.length <= 2) e.preventDefault();
+    });
+
+    input.addEventListener('focus', function () {
+        if (!input.value) input.value = '+7 ';
+    });
+}
+
+// ===== ВАЛИДАЦИЯ И ОТПРАВКА =====
+function initRentForm() {
+    const form = document.getElementById('rent-order-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('rent-name');
+        const phone = document.getElementById('rent-phone');
+        const nameErr = document.getElementById('rent-name-error');
+        const phoneErr = document.getElementById('rent-phone-error');
+        let valid = true;
+
+        if (name.value.trim().length < 2) {
+            nameErr.textContent = 'Введите имя (минимум 2 символа)';
+            valid = false;
+        } else {
+            nameErr.textContent = '';
+        }
+
+        const phoneClean = phone.value.replace(/\D/g, '');
+        if (!/^7\d{10}$/.test(phoneClean)) {
+            phoneErr.textContent = 'Введите корректный номер в формате +7 (XXX) XXX-XX-XX';
+            valid = false;
+        } else {
+            phoneErr.textContent = '';
+        }
+
+        if (!valid) return;
+
+        form.style.display = 'none';
+        document.getElementById('rent-success').style.display = 'block';
+        setTimeout(closeRentModal, 2500);
+    });
+}
+
+// ===== ИНИЦИАЛИЗАЦИЯ =====
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.rent-book-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            openRentModal(this.dataset.title, this.dataset.price);
+        });
+    });
+
+    document.getElementById('rent-modal-close').addEventListener('click', closeRentModal);
+    document.getElementById('rent-modal').addEventListener('click', function (e) {
+        if (e.target === this) closeRentModal();
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeRentModal();
+    });
+
+    initPhoneMask();
+    initRentForm();
+});

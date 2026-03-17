@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин | Футбольная секция «Высота»</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Прогресс чтения -->
+    <div id="reading-progress"></div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="logo">⚽ Высота Футбол</div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Главная</a></li>
+                        <li><a href="about.html" class="nav-link">О нас</a></li>
+                        <li><a href="lessons.html" class="nav-link">Занятия</a></li>
+                        <li><a href="rent.html" class="nav-link">Аренда</a></li>
+                        <li><a href="shop.html" class="nav-link active">Магазин</a></li>
+                        <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                    </ul>
+                </nav>
+                <button class="cart-btn" onclick="openCart()">
+                    🛒 Корзина <span id="cart-counter">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Магазин мерча</h1>
+            </div>
+        </section>
+
+        <section class="shop">
+            <div class="container">
+                <div class="filter-bar">
+                    <button class="filter-btn active" onclick="setFilter(this, 'Все')">Все</button>
+                    <button class="filter-btn" onclick="setFilter(this, 'Одежда')">Одежда</button>
+                    <button class="filter-btn" onclick="setFilter(this, 'Инвентарь')">Инвентарь</button>
+                    <button class="filter-btn" onclick="setFilter(this, 'Сувениры')">Сувениры</button>
+                </div>
+                <div class="products-grid" id="products-grid"></div>
+            </div>
+        </section>
+
+        <section class="comments-section">
+            <div class="container">
+                <h2 class="section-title">Отзывы покупателей</h2>
+                <div class="comments-list" id="comments-list"></div>
+                <div class="comment-form-wrap">
+                    <h3>Оставить отзыв</h3>
+                    <form id="comment-form">
+                        <div class="form-group">
+                            <label for="comment-name">Ваше имя *</label>
+                            <input type="text" id="comment-name" placeholder="Введите имя">
+                            <div class="field-error" id="name-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment-text">Отзыв *</label>
+                            <textarea id="comment-text" rows="3" placeholder="Напишите ваш отзыв о товаре..."></textarea>
+                            <div class="field-error" id="text-error"></div>
+                        </div>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно товара -->
+    <div id="product-modal">
+        <div class="product-modal-inner">
+            <button class="modal-close-btn" onclick="closeProductModal()">✕</button>
+            <img id="modal-img" src="" alt="" class="product-modal-img">
+            <div class="product-modal-info">
+                <h2 id="modal-name"></h2>
+                <div class="product-modal-article" id="modal-article"></div>
+                <div class="product-modal-price" id="modal-price"></div>
+                <p class="product-modal-desc" id="modal-desc"></p>
+                <button class="btn" id="modal-add-btn">В корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно корзины -->
+    <div id="cart-modal">
+        <div class="cart-inner">
+            <div class="cart-header">
+                <h2>🛒 Корзина</h2>
+                <button class="cart-close" onclick="closeCart()">✕</button>
+            </div>
+            <div id="cart-body"></div>
+            <div class="cart-footer">
+                <span class="cart-total-label">Итого:</span>
+                <span id="cart-total">0 ₽</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомление -->
+    <div id="cart-notification"></div>
+
+    <!-- Кнопка наверх -->
+    <button id="scroll-top-btn" title="Наверх">↑</button>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Футбольная секция «Высота»</h3>
+                    <p>Санкт-Петербург, Невский район</p>
+                    <p>© 2026 Все права защищены</p>
+                </div>
+                <div>
+                    <h4>Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="lessons.html">Занятия</a></li>
+                        <li><a href="rent.html">Аренда</a></li>
+                        <li><a href="shop.html">Магазин</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Соцсети</h4>
+                    <div class="social-icons">
+                        <a href="https://vk.com/visota.sport" target="_blank" class="social-icon" title="ВКонтакте">🔵</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🎥</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
