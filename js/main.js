@@ -1,4 +1,4 @@
-// ===== ДАННЫЕ ТОВАРОВ (мерч секции) =====
+// Карточки товаров
 const products = [
     {
         id: 1,
@@ -56,7 +56,7 @@ const products = [
     }
 ];
 
-// ===== КОРЗИНА =====
+// Корзина
 let cart = JSON.parse(localStorage.getItem('vysota_cart')) || [];
 
 function saveCart() {
@@ -186,7 +186,7 @@ function setFilter(btn, filter) {
     renderProducts(filter);
 }
 
-// ===== МОДАЛЬНОЕ ОКНО ТОВАРА =====
+// Модальное окно товара
 function openProductModal(id) {
     const p = products.find(pr => pr.id === id);
     if (!p) return;
@@ -287,7 +287,7 @@ function addComment(e) {
     textInput.value = '';
 }
 
-// ===== ПРОГРЕСС ЧТЕНИЯ =====
+// Прогресс чтения
 function initReadingProgress() {
     const bar = document.getElementById('reading-progress');
     if (!bar) return;
@@ -299,7 +299,7 @@ function initReadingProgress() {
     });
 }
 
-// ===== КНОПКА "НАВЕРХ" =====
+// Кнопка наверх
 function initScrollTop() {
     const btn = document.getElementById('scroll-top-btn');
     if (!btn) return;
@@ -311,7 +311,7 @@ function initScrollTop() {
     });
 }
 
-// ===== ИНИЦИАЛИЗАЦИЯ =====
+// Инициализация
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts('Все');
     updateCartCounter();
