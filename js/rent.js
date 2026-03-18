@@ -1,4 +1,4 @@
-// ===== АНИМАЦИЯ НАКРУЧИВАНИЯ ЦЕН =====
+// "накрутка" цен
 function animatePrice(el) {
     const text = el.textContent;
     const match = text.match(/[\d\s]+/);
@@ -38,7 +38,7 @@ function initPriceAnimations() {
     document.querySelectorAll('.rent-card').forEach(el => observer.observe(el));
 }
 
-// ===== МОДАЛЬНОЕ ОКНО БРОНИРОВАНИЯ =====
+// модальное окно бронирования
 function openRentModal(title, price) {
     document.getElementById('rent-modal-title').textContent = `Бронирование: ${title}`;
     document.getElementById('rent-modal-subtitle').textContent = `Стоимость: ${price}`;
@@ -57,7 +57,7 @@ function closeRentModal() {
     document.body.style.overflow = 'auto';
 }
 
-// ===== МАСКА ТЕЛЕФОНА РФ =====
+// маска телефона РФ
 function initPhoneMask() {
     const input = document.getElementById('rent-phone');
     if (!input) return;
@@ -86,7 +86,7 @@ function initPhoneMask() {
     });
 }
 
-// ===== ВАЛИДАЦИЯ И ОТПРАВКА =====
+// валидация и отправка
 function initRentForm() {
     const form = document.getElementById('rent-order-form');
     if (!form) return;
@@ -123,7 +123,7 @@ function initRentForm() {
     });
 }
 
-// ===== ИНИЦИАЛИЗАЦИЯ =====
+// =инициализация
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.rent-book-btn').forEach(btn => {
         btn.addEventListener('click', function () {
