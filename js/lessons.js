@@ -1,4 +1,4 @@
-// ===== ВЫБОР КАРТОЧКИ ТАРИФА =====
+// Выбор карточки тарифа
 function initPricingCards() {
     const cards = document.querySelectorAll('.pricing-card');
 
@@ -16,7 +16,7 @@ function initPricingCards() {
     });
 }
 
-// ===== ТОСТ-УВЕДОМЛЕНИЕ =====
+// Тост-уведомление
 function showToast(message) {
     let toast = document.getElementById('lessons-toast');
     if (!toast) return;
@@ -26,7 +26,7 @@ function showToast(message) {
     toast._timer = setTimeout(() => toast.classList.remove('show'), 2800);
 }
 
-// ===== СЧЁТЧИК АНИМАЦИИ ЦЕН =====
+// Анимация цен, типа прокрутка
 function animatePrice(el) {
     const text = el.textContent;
     const match = text.match(/[\d\s]+/);
@@ -48,7 +48,7 @@ function animatePrice(el) {
     requestAnimationFrame(update);
 }
 
-// ===== INTERSECTION OBSERVER =====
+// Intersection observer
 function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -71,7 +71,7 @@ function initScrollAnimations() {
     });
 }
 
-// ===== ВЫБОР АБОНЕМЕНТА НА СПОРТЗАЛ =====
+// Выбор абонемента в спортзал
 function initGymCards() {
     const cards = document.querySelectorAll('.gym-card');
 
@@ -96,7 +96,7 @@ function initGymCards() {
     });
 }
 
-// ===== МОДАЛЬНОЕ ОКНО АБОНЕМЕНТА =====
+// Модальное окно абонемента
 function openGymModal(title, price) {
     document.getElementById('gym-modal-title').textContent = `Оформление: ${title}`;
     document.getElementById('gym-modal-subtitle').textContent = `Стоимость: ${price}`;
@@ -115,7 +115,7 @@ function closeGymModal() {
     document.body.style.overflow = 'auto';
 }
 
-// ===== МАСКА ТЕЛЕФОНА РФ =====
+// Маска телефона под рф
 function initPhoneMask() {
     const input = document.getElementById('gym-phone');
     if (!input) return;
@@ -147,7 +147,7 @@ function initPhoneMask() {
     });
 }
 
-// ===== ВАЛИДАЦИЯ И ОТПРАВКА ФОРМЫ =====
+// Валидация и отправка формы
 function initGymForm() {
     const form = document.getElementById('gym-order-form');
     if (!form) return;
@@ -186,7 +186,7 @@ function initGymForm() {
     });
 }
 
-// ===== ИНИЦИАЛИЗАЦИЯ =====
+// Инициализация
 document.addEventListener('DOMContentLoaded', () => {
     initPricingCards();
     initGymCards();
