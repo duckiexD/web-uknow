@@ -1686,3 +1686,12 @@ tr:hover td {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== Telegram иконка в футере ===== */
+.social-icon--tg {
+    background: #29b6f6;
+}
+
+.social-icon--tg:hover {
+    background: #0288d1;
+}

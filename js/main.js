@@ -2,36 +2,36 @@
 const products = [
     {
         id: 1,
-        name: 'Футболка «Высота»',
+        name: 'Футболка Сборной России',
         price: 1200,
-        image: 'images/kids.jpeg',
+        image: 'images/fytbolka.jpeg',
         category: 'Одежда',
         article: 'VYS-001',
-        description: 'Официальная футболка футбольной секции «Высота». Материал: 100% хлопок. Доступные размеры: S, M, L, XL.'
+        description: 'Официальная футболка Сборной России по фтуболу. Материал: 100% хлопок. Доступные размеры: S, M, L, XL.'
     },
     {
         id: 2,
-        name: 'Шорты тренировочные',
+        name: 'Шорты Сборной России',
         price: 900,
-        image: 'images/trenirovka.jpeg',
+        image: 'images/shorti.jpeg',
         category: 'Одежда',
         article: 'VYS-002',
-        description: 'Тренировочные шорты с логотипом секции. Материал: полиэстер. Размеры: S, M, L, XL.'
+        description: 'Тренировочные шорты Сборной России. Материал: полиэстер. Размеры: S, M, L, XL.'
     },
     {
         id: 3,
         name: 'Мяч футбольный',
         price: 2500,
-        image: 'images/match.jpeg',
+        image: 'images/myach.jpeg',
         category: 'Инвентарь',
         article: 'VYS-003',
-        description: 'Официальный мяч секции «Высота». Размер 5. Подходит для тренировок и соревнований.'
+        description: 'Официальный мяч ЧМ 2018. Размер 5. Подходит для тренировок и соревнований.'
     },
     {
         id: 4,
         name: 'Бутсы детские',
         price: 3200,
-        image: 'images/kids.jpeg',
+        image: 'images/bytsi.jpeg',
         category: 'Инвентарь',
         article: 'VYS-004',
         description: 'Детские бутсы для игры на искусственном газоне. Размеры: 28-38.'
@@ -40,19 +40,19 @@ const products = [
         id: 5,
         name: 'Кружка «Высота»',
         price: 600,
-        image: 'images/shtab.jpeg',
+        image: 'images/kryzhka.jpeg',
         category: 'Сувениры',
         article: 'VYS-005',
-        description: 'Керамическая кружка с логотипом секции «Высота». Объём 330 мл.'
+        description: 'Керамическая кружка секции "Высота". Объём 330 мл.'
     },
     {
         id: 6,
         name: 'Шарф болельщика',
         price: 800,
-        image: 'images/visotakomanda.jpeg',
+        image: 'images/scarf.jpeg',
         category: 'Сувениры',
         article: 'VYS-006',
-        description: 'Шарф болельщика в цветах секции «Высота». Длина 140 см.'
+        description: 'Шарф болельщика с надписью Россия. Длина 140 см.'
     }
 ];
 
