@@ -1,4 +1,3 @@
-// "накрутка" цен
 function animatePrice(el) {
     const text = el.textContent;
     const match = text.match(/[\d\s]+/);
@@ -14,7 +13,7 @@ function animatePrice(el) {
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         const current = Math.round(eased * target);
-        el.textContent = text.replace(/[\d\s]+/, current.toLocaleString('ru-RU') + ' ');
+        el.textContent = text.replace(/[\d\s]+/, `${current.toLocaleString('ru-RU')} `);
         if (progress < 1) requestAnimationFrame(update);
     }
 
@@ -22,48 +21,55 @@ function animatePrice(el) {
 }
 
 function initPriceAnimations() {
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const priceEl = entry.target.querySelector('.rent-price');
-                if (priceEl && !priceEl.dataset.animated) {
-                    priceEl.dataset.animated = '1';
-                    animatePrice(priceEl);
-                }
-                observer.unobserve(entry.target);
+            if (!entry.isIntersecting) return;
+
+            const priceEl = entry.target.querySelector('.rent-price');
+            if (priceEl && !priceEl.dataset.animated) {
+                priceEl.dataset.animated = '1';
+                animatePrice(priceEl);
             }
+
+            observer.unobserve(entry.target);
         });
     }, { threshold: 0.2 });
 
     document.querySelectorAll('.rent-card').forEach(el => observer.observe(el));
 }
 
-// модальное окно бронирования
 function openRentModal(title, price) {
+    const modal = document.getElementById('rent-modal');
+    const form = document.getElementById('rent-order-form');
+    const success = document.getElementById('rent-success');
+
+    if (!modal || !form || !success) return;
+
     document.getElementById('rent-modal-title').textContent = `Бронирование: ${title}`;
     document.getElementById('rent-modal-subtitle').textContent = `Стоимость: ${price}`;
-    document.getElementById('rent-success').style.display = 'none';
-    document.getElementById('rent-order-form').style.display = 'block';
+    success.style.display = 'none';
+    form.style.display = 'block';
     document.getElementById('rent-name').value = '';
     document.getElementById('rent-phone').value = '';
     document.getElementById('rent-name-error').textContent = '';
     document.getElementById('rent-phone-error').textContent = '';
-    document.getElementById('rent-modal').style.display = 'flex';
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
 function closeRentModal() {
-    document.getElementById('rent-modal').style.display = 'none';
+    const modal = document.getElementById('rent-modal');
+    if (modal) modal.style.display = 'none';
     document.body.style.overflow = 'auto';
 }
 
-// маска телефона РФ
 function initPhoneMask() {
     const input = document.getElementById('rent-phone');
     if (!input) return;
 
-    input.addEventListener('input', function () {
+    input.addEventListener('input', () => {
         let val = input.value.replace(/\D/g, '');
+
         if (val.startsWith('8')) val = '7' + val.slice(1);
         if (!val.startsWith('7')) val = '7' + val;
         val = val.slice(0, 11);
@@ -77,21 +83,22 @@ function initPhoneMask() {
         input.value = result;
     });
 
-    input.addEventListener('keydown', function (e) {
-        if (e.key === 'Backspace' && input.value.length <= 2) e.preventDefault();
+    input.addEventListener('keydown', e => {
+        if (e.key === 'Backspace' && input.value.length <= 2) {
+            e.preventDefault();
+        }
     });
 
-    input.addEventListener('focus', function () {
+    input.addEventListener('focus', () => {
         if (!input.value) input.value = '+7 ';
     });
 }
 
-// валидация и отправка
 function initRentForm() {
     const form = document.getElementById('rent-order-form');
     if (!form) return;
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', e => {
         e.preventDefault();
 
         const name = document.getElementById('rent-name');
@@ -123,7 +130,6 @@ function initRentForm() {
     });
 }
 
-// =инициализация
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.rent-book-btn').forEach(btn => {
         btn.addEventListener('click', function () {
@@ -131,9 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.getElementById('rent-modal-close').addEventListener('click', closeRentModal);
-    document.getElementById('rent-modal').addEventListener('click', function (e) {
-        if (e.target === this) closeRentModal();
+    document.getElementById('rent-modal-close')?.addEventListener('click', closeRentModal);
+    document.getElementById('rent-modal')?.addEventListener('click', e => {
+        if (e.target === e.currentTarget) closeRentModal();
     });
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closeRentModal();

@@ -4,11 +4,35 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-2: #f1f8e9;
+    --text: #1e293b;
+    --muted: #475569;
+    --brand: #2e7d32;
+    --brand-dark: #1b5e20;
+    --brand-deep: #0a3b2e;
+    --border: #e2e8f0;
+    --danger: #d32f2f;
+    --shadow-sm: 0 3px 10px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.12);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-pill: 30px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    color: #1e293b;
-    background-color: #f8fafc;
+    color: var(--text);
+    background-color: var(--bg);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -19,28 +43,32 @@ main {
 }
 
 .container {
-    width: 100%;  
-    max-width: 1400px;  
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;  
+    padding: 0 2rem;
 }
 
 img {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: 12px;
-    transition: transform 0.3s;
+    border-radius: var(--radius-md);
+    transition: transform 0.3s ease;
 }
 
 img:hover {
     transform: scale(1.02);
 }
 
-/* ===== Шапка ===== */
+a {
+    color: inherit;
+}
+
+/* Header */
 .header {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background: var(--surface);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     padding: 1rem 0;
     position: sticky;
     top: 0;
@@ -69,13 +97,13 @@ img:hover {
 .logo {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #0a3b2e;
-    transition: transform 0.3s, color 0.3s;
+    color: var(--brand-deep);
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .logo:hover {
     transform: scale(1.05);
-    color: #2e7d32;
+    color: var(--brand);
 }
 
 .nav-list {
@@ -86,11 +114,11 @@ img:hover {
 
 .nav-link {
     text-decoration: none;
-    color: #1e293b;
+    color: var(--text);
     font-weight: 500;
     padding: 0.5rem 0;
     position: relative;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .nav-link::after {
@@ -100,7 +128,7 @@ img:hover {
     left: 0;
     width: 0;
     height: 3px;
-    background: #2e7d32;
+    background: var(--brand);
     transition: width 0.3s ease;
 }
 
@@ -109,40 +137,39 @@ img:hover {
 }
 
 .nav-link.active {
-    color: #2e7d32;
-    border-bottom: 3px solid #2e7d32;
+    color: var(--brand);
+    border-bottom: 3px solid var(--brand);
 }
 
-/* ===== Кнопки ===== */
+/* Buttons */
 .btn {
     display: inline-block;
-    background: #2e7d32;
+    background: var(--brand);
     color: white;
     padding: 0.8rem 2rem;
-    border-radius: 30px;
+    border-radius: var(--radius-pill);
     text-decoration: none;
     font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
-    background: #1b5e20;
+    background: var(--brand-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(46,125,50,0.3);
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
 }
 
 .btn-full {
     width: 100%;
 }
 
-/* ===== Заголовки секций ===== */
 .section-title {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2.5rem;
-    color: #0a3b2e;
+    color: var(--brand-deep);
     position: relative;
 }
 
@@ -151,11 +178,11 @@ img:hover {
     display: block;
     width: 60px;
     height: 3px;
-    background: #2e7d32;
+    background: var(--brand);
     margin: 0.8rem auto 0;
 }
 
-/* ===== Hero секция (Grid) ===== */
+/* Hero */
 .hero {
     padding: 4rem 0;
     background: #e8f5e9;
@@ -176,7 +203,7 @@ img:hover {
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;  /* Увеличено с 3rem */
+    gap: 4rem;
     align-items: center;
 }
 
@@ -188,17 +215,17 @@ img:hover {
 
 .hero h1 {
     font-size: 2.3rem;
-    color: #0a3b2e;
+    color: var(--brand-deep);
     margin-bottom: 1rem;
 }
 
 .hero p {
     font-size: 1.2rem;
-    color: #475569;
+    color: var(--muted);
     margin-bottom: 2rem;
 }
 
-/* ===== Преимущества ===== */
+/* Features */
 .features {
     padding: 4rem 0;
 }
@@ -211,15 +238,16 @@ img:hover {
 }
 
 .feature-card {
-    background: white;
-    border-radius: 16px;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
     padding: 2rem 1.5rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
     flex: 1 1 200px;
     max-width: 250px;
     text-align: center;
     transition: all 0.3s ease;
     animation: fadeInUp 0.6s ease-out backwards;
+    cursor: default;
 }
 
 .feature-card:nth-child(1) { animation-delay: 0.1s; }
@@ -240,24 +268,24 @@ img:hover {
 
 .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .feature-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
     display: inline-block;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .feature-card:hover .feature-icon {
     transform: scale(1.2) rotate(5deg);
 }
 
-/* ===== Галерея (Grid) ===== */
+/* Gallery */
 .gallery {
     padding: 4rem 0;
-    background: #f1f8e9;
+    background: var(--surface-2);
 }
 
 .gallery-grid {
@@ -268,31 +296,31 @@ img:hover {
 
 .gallery-item {
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .gallery-item img {
     width: 100%;
     height: 280px;
     object-fit: cover;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .gallery-item:hover img {
     transform: scale(1.1);
 }
 
-/* ===== Таблица ===== */
+/* Table */
 .schedule {
     padding: 4rem 0;
 }
 
 .table-wrapper {
     overflow-x: auto;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
 }
 
 table {
@@ -300,31 +328,31 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--border);
 }
 
 th {
-    background: #0a3b2e;
+    background: var(--brand-deep);
     color: white;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
 }
 
 th:hover {
-    background: #2e7d32;
+    background: var(--brand);
 }
 
 tr:hover td {
-    background: #f1f8e9;
-    transform: scale(1.01);
-    transition: all 0.3s;
+    background: var(--surface-2);
+    transition: background 0.3s ease;
 }
 
-/* ===== Страницы ===== */
+/* Page header */
 .page-header {
-    background: #0a3b2e;
+    background: var(--brand-deep);
     color: white;
     padding: 2.5rem 0;
     text-align: center;
@@ -334,21 +362,21 @@ tr:hover td {
     color: white;
 }
 
-/* ===== О нас (Grid) ===== */
+/* About */
 .about {
     padding: 4rem 0;
 }
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1.3fr 0.7fr;  /* Текст еще шире, изображения уже */
-    gap: 3rem;  /* Увеличено обратно для баланса */
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 3rem;
     align-items: start;
     max-width: 100%;
 }
 
 .about-text h2 {
-    color: #0a3b2e;
+    color: var(--brand-deep);
     margin: 1.5rem 0 1rem;
 }
 
@@ -356,12 +384,14 @@ tr:hover td {
     margin-top: 0;
 }
 
-.coaches-list, .achievements-list {
+.coaches-list,
+.achievements-list {
     list-style: none;
     margin-bottom: 1rem;
 }
 
-.coaches-list li, .achievements-list li {
+.coaches-list li,
+.achievements-list li {
     margin-bottom: 0.8rem;
     padding-left: 1.5rem;
     position: relative;
@@ -387,11 +417,11 @@ tr:hover td {
 
 .about-images img {
     width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Контакты (Grid) ===== */
+/* Contacts */
 .contacts {
     padding: 4rem 0;
 }
@@ -399,12 +429,13 @@ tr:hover td {
 .contacts-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;  /* Увеличено для баланса между колонками */
+    gap: 4rem;
     max-width: 100%;
 }
 
-.contact-info h2, .contact-form h2 {
-    color: #0a3b2e;
+.contact-info h2,
+.contact-form h2 {
+    color: var(--brand-deep);
     margin-bottom: 1.5rem;
 }
 
@@ -415,15 +446,15 @@ tr:hover td {
 }
 
 .address-link {
-    color: #1e293b;
+    color: var(--text);
     text-decoration: none;
-    transition: color 0.3s, text-decoration 0.3s;
+    transition: color 0.3s ease, border-color 0.3s ease;
     border-bottom: 2px solid transparent;
 }
 
 .address-link:hover {
-    color: #2e7d32;
-    border-bottom: 2px solid #2e7d32;
+    color: var(--brand);
+    border-bottom-color: var(--brand);
 }
 
 .work-time {
@@ -447,20 +478,20 @@ tr:hover td {
     margin-top: 2rem;
 }
 
-/* ===== Карта Яндекс ===== */
 .map-container {
     margin: 1.5rem 0;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .map-container iframe {
     display: block;
-    border-radius: 12px;
+    border: 0;
+    border-radius: var(--radius-md);
 }
 
-/* ===== Форма ===== */
+/* Forms */
 .form-group {
     margin-bottom: 1.2rem;
 }
@@ -469,7 +500,7 @@ tr:hover td {
     display: block;
     margin-bottom: 0.4rem;
     font-weight: 500;
-    color: #0a3b2e;
+    color: var(--brand-deep);
 }
 
 .form-group input,
@@ -477,28 +508,36 @@ tr:hover td {
 .form-group textarea {
     width: 100%;
     padding: 0.8rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
     font-family: inherit;
     transition: all 0.3s ease;
+    background: var(--surface);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #2e7d32;
-    box-shadow: 0 0 0 3px rgba(46,125,50,0.1);
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
     transform: translateY(-2px);
 }
 
 .form-group input:hover,
 .form-group select:hover,
 .form-group textarea:hover {
-    border-color: #2e7d32;
+    border-color: var(--brand);
 }
 
-/* ===== Подвал (Grid) ===== */
+.field-error {
+    color: var(--danger);
+    font-size: 0.82rem;
+    margin-top: 0.3rem;
+    min-height: 1rem;
+}
+
+/* Footer */
 .footer {
     background: #1e293b;
     color: white;
@@ -512,7 +551,8 @@ tr:hover td {
     gap: 2rem;
 }
 
-.footer h3, .footer h4 {
+.footer h3,
+.footer h4 {
     color: white;
     margin-bottom: 1rem;
 }
@@ -531,9 +571,9 @@ tr:hover td {
 }
 
 .footer-links a {
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     display: inline-block;
 }
 
@@ -554,7 +594,7 @@ tr:hover td {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     text-decoration: none;
     font-size: 1.3rem;
@@ -562,167 +602,39 @@ tr:hover td {
 }
 
 .social-icon:hover {
-    background: #2e7d32;
+    background: var(--brand);
     transform: translateY(-5px) rotate(360deg);
-    box-shadow: 0 5px 15px rgba(46,125,50,0.4);
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
 }
 
-/* ===== Адаптивность ===== */
-@media (max-width: 992px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.social-icon--tg {
+    background: #29b6f6;
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 0 1rem;  
-    }
-    
-    .header-row {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .nav-list {
-        gap: 1.5rem;
-    }
-    
-    .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .about-grid,
-    .contacts-grid,
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .footer-grid {
-        text-align: center;
-    }
-    
-    .social-icons {
-        justify-content: center;
-    }
+.social-icon--tg:hover {
+    background: #0288d1;
 }
 
-@media (max-width: 480px) {
-    .nav-list {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .features-flex {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .feature-card {
-        max-width: 100%;
-    }
-    
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-}
-
-/* ===== Lightbox без JavaScript ===== */
-.lightbox-target {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 9999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.lightbox-target:target {
-    display: flex;
-}
-
-.lightbox-target img {
-    max-width: 90%;
-    max-height: 90vh;
-    object-fit: contain;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    color: white;
-    font-size: 3rem;
-    text-decoration: none;
-    font-weight: 300;
-    line-height: 1;
-    transition: transform 0.3s;
-}
-
-.lightbox-close:hover {
-    transform: scale(1.2);
-}
-
-.clickable-image {
-    cursor: pointer;
-    position: relative;
-}
-
-.clickable-image::after {
-    content: '🔍';
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 0.5rem;
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 1.2rem;
-}
-
-.clickable-image:hover::after {
-    opacity: 1;
-}
-
-/* ===== Прогресс чтения ===== */
+/* Reading progress */
 #reading-progress {
     position: fixed;
     top: 0;
     left: 0;
     height: 4px;
     width: 0%;
-    background: #2e7d32;
+    background: var(--brand);
     z-index: 9998;
     transition: width 0.1s linear;
 }
 
-/* ===== Кнопка "Наверх" ===== */
+/* Scroll top */
 #scroll-top-btn {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
     width: 48px;
     height: 48px;
-    background: #2e7d32;
+    background: var(--brand);
     color: white;
     border: none;
     border-radius: 50%;
@@ -732,25 +644,25 @@ tr:hover td {
     align-items: center;
     justify-content: center;
     z-index: 999;
-    box-shadow: 0 4px 15px rgba(46,125,50,0.4);
-    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+    transition: all 0.3s ease;
 }
 
 #scroll-top-btn:hover {
-    background: #1b5e20;
+    background: var(--brand-dark);
     transform: translateY(-3px);
 }
 
-/* ===== Уведомление корзины ===== */
+/* Cart notification */
 #cart-notification {
     position: fixed;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: #0a3b2e;
+    background: var(--brand-deep);
     color: white;
     padding: 0.8rem 1.5rem;
-    border-radius: 30px;
+    border-radius: var(--radius-pill);
     font-size: 0.95rem;
     z-index: 9999;
     transition: transform 0.3s ease;
@@ -761,30 +673,30 @@ tr:hover td {
     transform: translateX(-50%) translateY(0);
 }
 
-/* ===== Счётчик корзины в шапке ===== */
+/* Cart button */
 .cart-btn {
     position: relative;
     background: none;
-    border: 2px solid #2e7d32;
-    color: #2e7d32;
+    border: 2px solid var(--brand);
+    color: var(--brand);
     padding: 0.5rem 1rem;
-    border-radius: 30px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .cart-btn:hover {
-    background: #2e7d32;
+    background: var(--brand);
     color: white;
 }
 
 #cart-counter {
-    background: #d32f2f;
+    background: var(--danger);
     color: white;
     border-radius: 50%;
     width: 20px;
@@ -796,10 +708,10 @@ tr:hover td {
     font-weight: 700;
 }
 
-/* ===== Секция каталога ===== */
+/* Shop */
 .shop {
     padding: 4rem 0;
-    background: #f8fafc;
+    background: var(--bg);
 }
 
 .filter-bar {
@@ -812,19 +724,19 @@ tr:hover td {
 
 .filter-btn {
     padding: 0.5rem 1.5rem;
-    border: 2px solid #2e7d32;
-    background: white;
-    color: #2e7d32;
-    border-radius: 30px;
+    border: 2px solid var(--brand);
+    background: var(--surface);
+    color: var(--brand);
+    border-radius: var(--radius-pill);
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 500;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: #2e7d32;
+    background: var(--brand);
     color: white;
 }
 
@@ -835,16 +747,16 @@ tr:hover td {
 }
 
 .product-card {
-    background: white;
-    border-radius: 16px;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
-    transition: all 0.3s;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
 .product-img-wrap {
@@ -858,7 +770,7 @@ tr:hover td {
     height: 100%;
     object-fit: cover;
     border-radius: 0;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .product-img-wrap:hover img {
@@ -877,20 +789,20 @@ tr:hover td {
 
 .product-name {
     font-size: 1rem;
-    color: #0a3b2e;
+    color: var(--brand-deep);
     margin-bottom: 0.5rem;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .product-name:hover {
-    color: #2e7d32;
+    color: var(--brand);
 }
 
 .product-price {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #2e7d32;
+    color: var(--brand);
     margin-bottom: 1rem;
 }
 
@@ -898,17 +810,17 @@ tr:hover td {
     width: 100%;
     padding: 0.6rem;
     font-size: 0.9rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
 }
 
-/* ===== Модальное окно товара ===== */
+/* Product modal */
 #product-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 9999;
     display: none;
     align-items: center;
@@ -917,8 +829,8 @@ tr:hover td {
 }
 
 .product-modal-inner {
-    background: white;
-    border-radius: 16px;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
     max-width: 600px;
     width: 100%;
     overflow: hidden;
@@ -942,7 +854,7 @@ tr:hover td {
 }
 
 .product-modal-info h2 {
-    color: #0a3b2e;
+    color: var(--brand-deep);
     font-size: 1.3rem;
 }
 
@@ -954,7 +866,7 @@ tr:hover td {
 .product-modal-price {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #2e7d32;
+    color: var(--brand);
 }
 
 .product-modal-desc {
@@ -968,7 +880,7 @@ tr:hover td {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     border-radius: 50%;
@@ -979,21 +891,23 @@ tr:hover td {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
 }
 
 .modal-close-btn:hover {
-    background: #d32f2f;
+    background: var(--danger);
 }
 
-/* ===== Корзина ===== */
-#cart-modal {
+/* Cart modal */
+#cart-modal,
+#gym-modal,
+#rent-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 9999;
     display: none;
     align-items: center;
@@ -1002,8 +916,8 @@ tr:hover td {
 }
 
 .cart-inner {
-    background: white;
-    border-radius: 16px;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
     width: 100%;
     max-width: 550px;
     max-height: 80vh;
@@ -1017,24 +931,26 @@ tr:hover td {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid var(--border);
 }
 
 .cart-header h2 {
-    color: #0a3b2e;
+    color: var(--brand-deep);
 }
 
-.cart-close {
+.cart-close,
+.gym-modal-close {
     background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
     color: #666;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
-.cart-close:hover {
-    color: #d32f2f;
+.cart-close:hover,
+.gym-modal-close:hover {
+    color: var(--danger);
 }
 
 #cart-body {
@@ -1054,14 +970,14 @@ tr:hover td {
     align-items: center;
     gap: 1rem;
     padding: 1rem 0;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--border);
 }
 
 .cart-item img {
     width: 60px;
     height: 60px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
 }
 
 .cart-item-info {
@@ -1070,12 +986,12 @@ tr:hover td {
 
 .cart-item-name {
     font-weight: 500;
-    color: #0a3b2e;
+    color: var(--brand-deep);
     font-size: 0.95rem;
 }
 
 .cart-item-price {
-    color: #2e7d32;
+    color: var(--brand);
     font-weight: 600;
     margin-top: 0.2rem;
 }
@@ -1089,20 +1005,20 @@ tr:hover td {
 .qty-btn {
     width: 28px;
     height: 28px;
-    border: 2px solid #2e7d32;
-    background: white;
-    color: #2e7d32;
+    border: 2px solid var(--brand);
+    background: var(--surface);
+    color: var(--brand);
     border-radius: 50%;
     cursor: pointer;
     font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .qty-btn:hover {
-    background: #2e7d32;
+    background: var(--brand);
     color: white;
 }
 
@@ -1115,11 +1031,11 @@ tr:hover td {
 .cart-remove {
     background: none;
     border: none;
-    color: #d32f2f;
+    color: var(--danger);
     cursor: pointer;
     font-size: 1rem;
     padding: 0.3rem;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .cart-remove:hover {
@@ -1128,7 +1044,7 @@ tr:hover td {
 
 .cart-footer {
     padding: 1.5rem;
-    border-top: 2px solid #e2e8f0;
+    border-top: 2px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1136,20 +1052,20 @@ tr:hover td {
 
 .cart-total-label {
     font-size: 1.1rem;
-    color: #0a3b2e;
+    color: var(--brand-deep);
     font-weight: 600;
 }
 
 #cart-total {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #2e7d32;
+    color: var(--brand);
 }
 
-/* ===== Комментарии ===== */
+/* Comments */
 .comments-section {
     padding: 4rem 0;
-    background: #f1f8e9;
+    background: var(--surface-2);
 }
 
 .comments-list {
@@ -1163,11 +1079,11 @@ tr:hover td {
 }
 
 .comment-item {
-    background: white;
-    border-radius: 12px;
+    background: var(--surface);
+    border-radius: var(--radius-md);
     padding: 1.2rem;
     margin-bottom: 1rem;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
     animation: fadeInUp 0.4s ease-out;
 }
 
@@ -1180,7 +1096,7 @@ tr:hover td {
 
 .comment-author {
     font-weight: 600;
-    color: #0a3b2e;
+    color: var(--brand-deep);
 }
 
 .comment-date {
@@ -1196,13 +1112,13 @@ tr:hover td {
 
 .comment-like {
     background: none;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border);
     border-radius: 20px;
     padding: 0.3rem 0.8rem;
     cursor: pointer;
     font-size: 0.85rem;
     color: #666;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .comment-like:hover {
@@ -1212,54 +1128,26 @@ tr:hover td {
 }
 
 .comment-form-wrap {
-    background: white;
-    border-radius: 16px;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
     padding: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
 }
 
 .comment-form-wrap h3 {
-    color: #0a3b2e;
+    color: var(--brand-deep);
     margin-bottom: 1.5rem;
 }
 
-.field-error {
-    color: #d32f2f;
-    font-size: 0.82rem;
-    margin-top: 0.3rem;
-    min-height: 1rem;
-}
-
-/* ===== Адаптивность новых элементов ===== */
-@media (max-width: 768px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .product-modal-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .product-modal-img {
-        height: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ===== Стоимость занятий ===== */
+/* Pricing */
 .pricing-section {
     padding: 4rem 0;
-    background: #f8fafc;
+    background: var(--bg);
 }
 
 .pricing-subtitle {
     text-align: center;
-    color: #475569;
+    color: var(--muted);
     margin-top: -1.5rem;
     margin-bottom: 2.5rem;
     font-size: 1rem;
@@ -1272,31 +1160,44 @@ tr:hover td {
 }
 
 .pricing-card {
-    background: white;
-    border: 2px solid #e2e8f0;
-    border-radius: 16px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
     padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.pricing-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .pricing-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    border-color: #2e7d32;
+    box-shadow: var(--shadow-lg);
+    border-color: var(--brand);
 }
 
 .pricing-card--featured {
-    border-color: #2e7d32;
-    box-shadow: 0 10px 30px rgba(46,125,50,0.15);
+    border-color: var(--brand);
+    box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15);
+}
+
+.pricing-card--selected {
+    border-color: var(--brand) !important;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2), 0 15px 30px rgba(46, 125, 50, 0.15) !important;
 }
 
 .pricing-name {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #2e7d32;
+    color: var(--brand);
 }
 
 .pricing-desc {
@@ -1308,7 +1209,7 @@ tr:hover td {
 .pricing-price {
     font-size: 2rem;
     font-weight: 700;
-    color: #0a3b2e;
+    color: var(--brand-deep);
 }
 
 .pricing-features {
@@ -1320,7 +1221,7 @@ tr:hover td {
 }
 
 .pricing-features li {
-    color: #475569;
+    color: var(--muted);
     font-size: 0.95rem;
     padding-bottom: 0.6rem;
     border-bottom: 1px solid #f1f5f9;
@@ -1331,10 +1232,10 @@ tr:hover td {
     border-bottom: none;
 }
 
-/* ===== Абонементы на спортзал ===== */
+/* Gym */
 .gym-section {
     padding: 4rem 0;
-    background: #f1f8e9;
+    background: var(--surface-2);
 }
 
 .gym-cards {
@@ -1344,33 +1245,86 @@ tr:hover td {
 }
 
 .gym-card {
-    background: white;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 12px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
     padding: 1.5rem 2rem;
     flex: 1 1 150px;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.gym-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .gym-card:hover {
-    border-color: #2e7d32;
+    border-color: var(--brand);
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.gym-card--selected {
+    border-color: var(--brand) !important;
+    background: var(--surface-2) !important;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2) !important;
 }
 
 .gym-card-title {
     font-size: 1rem;
-    color: #475569;
+    color: var(--muted);
     margin-bottom: 1.5rem;
 }
 
 .gym-card-price {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #0a3b2e;
+    color: var(--brand-deep);
 }
 
-/* ===== Аренда ===== */
+.gym-order-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+}
+
+.gym-modal-inner {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.gym-modal-inner h3 {
+    color: var(--brand-deep);
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+}
+
+.gym-modal-subtitle {
+    color: var(--brand);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.gym-success {
+    text-align: center;
+    color: var(--brand);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 0;
+}
+
+/* Rent */
 .rent-section {
     padding: 4rem 0;
 }
@@ -1383,26 +1337,34 @@ tr:hover td {
 }
 
 .rent-card {
-    background: white;
-    border: 2px solid #e2e8f0;
-    border-radius: 16px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
     padding: 2rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    cursor: pointer;
+}
+
+.rent-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .rent-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    border-color: #2e7d32;
+    box-shadow: var(--shadow-lg);
+    border-color: var(--brand);
 }
 
 .rent-card--featured {
-    border-color: #2e7d32;
-    box-shadow: 0 10px 30px rgba(46,125,50,0.15);
+    border-color: var(--brand);
+    box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15);
 }
 
 .rent-icon {
@@ -1410,14 +1372,14 @@ tr:hover td {
 }
 
 .rent-card h3 {
-    color: #0a3b2e;
+    color: var(--brand-deep);
     font-size: 1.3rem;
 }
 
 .rent-price {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #2e7d32;
+    color: var(--brand);
 }
 
 .rent-card p {
@@ -1440,10 +1402,10 @@ tr:hover td {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    background: white;
-    border-radius: 12px;
+    background: var(--surface);
+    border-radius: var(--radius-md);
     padding: 1.5rem;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
 }
 
 .rent-feature-icon {
@@ -1452,7 +1414,7 @@ tr:hover td {
 }
 
 .rent-feature h4 {
-    color: #0a3b2e;
+    color: var(--brand-deep);
     margin-bottom: 0.3rem;
 }
 
@@ -1461,208 +1423,7 @@ tr:hover td {
     font-size: 0.9rem;
 }
 
-.rent-photo {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* ===== Адаптивность новых страниц ===== */
-@media (max-width: 768px) {
-    .pricing-grid,
-    .rent-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .rent-features {
-        grid-template-columns: 1fr;
-    }
-
-    .gym-cards {
-        flex-direction: column;
-    }
-}
-
-/* ===== Чекбокс в форме ===== */
-.form-group--checkbox {
-    display: flex;
-    align-items: center;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    cursor: pointer;
-    font-weight: 500;
-    color: #0a3b2e;
-    font-size: 0.95rem;
-}
-
-.checkbox-label input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #2e7d32;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-/* ===== Lessons JS стили ===== */
-
-/* Карточки появляются снизу при скролле */
-.pricing-card,
-.gym-card {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s;
-}
-
-.pricing-card.visible,
-.gym-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Задержка для каждой карточки */
-.pricing-card:nth-child(1) { transition-delay: 0.05s; }
-.pricing-card:nth-child(2) { transition-delay: 0.15s; }
-.pricing-card:nth-child(3) { transition-delay: 0.25s; }
-
-.gym-card:nth-child(1) { transition-delay: 0.05s; }
-.gym-card:nth-child(2) { transition-delay: 0.1s; }
-.gym-card:nth-child(3) { transition-delay: 0.15s; }
-.gym-card:nth-child(4) { transition-delay: 0.2s; }
-.gym-card:nth-child(5) { transition-delay: 0.25s; }
-
-/* Выбранная карточка тарифа */
-.pricing-card--selected {
-    border-color: #2e7d32 !important;
-    box-shadow: 0 0 0 3px rgba(46,125,50,0.2), 0 15px 30px rgba(46,125,50,0.15) !important;
-    cursor: pointer;
-}
-
-.pricing-card {
-    cursor: pointer;
-}
-
-/* Выбранная карточка абонемента */
-.gym-card--selected {
-    border-color: #2e7d32 !important;
-    background: #f1f8e9 !important;
-    box-shadow: 0 0 0 3px rgba(46,125,50,0.2) !important;
-}
-
-.gym-card {
-    cursor: pointer;
-}
-
-/* Тост-уведомление */
-#lessons-toast {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: #0a3b2e;
-    color: white;
-    padding: 0.8rem 1.6rem;
-    border-radius: 30px;
-    font-size: 0.95rem;
-    z-index: 9999;
-    transition: transform 0.3s ease;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-#lessons-toast.show {
-    transform: translateX(-50%) translateY(0);
-}
-
-/* ===== Кнопка "Оформить" в gym-card ===== */
-.gym-order-btn {
-    width: 100%;
-    margin-top: 1rem;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-    border-radius: 8px;
-}
-
-/* ===== Модальное окно абонемента ===== */
-#gym-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 9999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.gym-modal-inner {
-    background: white;
-    border-radius: 16px;
-    padding: 2rem;
-    width: 100%;
-    max-width: 420px;
-    position: relative;
-    animation: fadeIn 0.25s ease-out;
-}
-
-.gym-modal-inner h3 {
-    color: #0a3b2e;
-    margin-bottom: 0.4rem;
-    font-size: 1.2rem;
-}
-
-.gym-modal-subtitle {
-    color: #2e7d32;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
-}
-
-.gym-modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.3rem;
-    cursor: pointer;
-    color: #666;
-    transition: color 0.2s;
-}
-
-.gym-modal-close:hover {
-    color: #d32f2f;
-}
-
-.gym-success {
-    text-align: center;
-    color: #2e7d32;
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 1rem 0;
-}
-
-/* ===== Модальное окно аренды (переиспользует стили gym-modal) ===== */
-#rent-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 9999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-/* ===== Фото спортзала в секции абонементов ===== */
+.rent-photo,
 .gym-photo {
     margin-top: 2.5rem;
 }
@@ -1677,21 +1438,189 @@ tr:hover td {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-radius: var(--radius-md);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
-@media (max-width: 600px) {
-    .gym-gallery {
+.gym-gallery img:hover {
+    transform: scale(1.02);
+}
+
+/* Lightbox */
+.lightbox-target {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.lightbox-target:target {
+    display: flex;
+}
+
+.lightbox-target img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    border-radius: var(--radius-md);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: white;
+    font-size: 3rem;
+    text-decoration: none;
+    font-weight: 300;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.2);
+}
+
+.clickable-image {
+    cursor: pointer;
+    position: relative;
+}
+
+.clickable-image::after {
+    content: '🔍';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.clickable-image:hover::after {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products-grid,
+    .pricing-grid,
+    .rent-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-modal-inner {
         grid-template-columns: 1fr;
     }
 }
 
-/* ===== Telegram иконка в футере ===== */
-.social-icon--tg {
-    background: #29b6f6;
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .header-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-list {
+        gap: 1.5rem;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .contacts-grid,
+    .footer-grid,
+    .rent-features {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero {
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .footer-grid {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .gym-cards {
+        flex-direction: column;
+    }
+
+    .gym-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .product-modal-img {
+        height: 200px;
+    }
 }
 
-.social-icon--tg:hover {
-    background: #0288d1;
+@media (max-width: 480px) {
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .gallery-grid,
+    .products-grid,
+    .pricing-grid,
+    .rent-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-card {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+    }
+
+    .cart-footer {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
 }
