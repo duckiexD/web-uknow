@@ -21,6 +21,9 @@ function animatePrice(el) {
 }
 
 function initPriceAnimations() {
+    const cards = document.querySelectorAll('.rent-card');
+    if (!cards.length) return;
+
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
@@ -35,37 +38,52 @@ function initPriceAnimations() {
         });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('.rent-card').forEach(el => observer.observe(el));
+    cards.forEach(el => observer.observe(el));
 }
 
 function openRentModal(title, price) {
     const modal = document.getElementById('rent-modal');
     const form = document.getElementById('rent-order-form');
     const success = document.getElementById('rent-success');
+    const modalTitle = document.getElementById('rent-modal-title');
+    const modalSubtitle = document.getElementById('rent-modal-subtitle');
+    const name = document.getElementById('rent-name');
+    const phone = document.getElementById('rent-phone');
+    const nameErr = document.getElementById('rent-name-error');
+    const phoneErr = document.getElementById('rent-phone-error');
 
-    if (!modal || !form || !success) return;
+    if (!modal || !form || !success || !modalTitle || !modalSubtitle || !name || !phone || !nameErr || !phoneErr) return;
 
-    document.getElementById('rent-modal-title').textContent = `Бронирование: ${title}`;
-    document.getElementById('rent-modal-subtitle').textContent = `Стоимость: ${price}`;
+    modalTitle.textContent = `Бронирование: ${title}`;
+    modalSubtitle.textContent = `Стоимость: ${price}`;
     success.style.display = 'none';
     form.style.display = 'block';
-    document.getElementById('rent-name').value = '';
-    document.getElementById('rent-phone').value = '';
-    document.getElementById('rent-name-error').textContent = '';
-    document.getElementById('rent-phone-error').textContent = '';
+    form.reset();
+    nameErr.textContent = '';
+    phoneErr.textContent = '';
+    phone.value = '+7 ';
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
 function closeRentModal() {
     const modal = document.getElementById('rent-modal');
+    const form = document.getElementById('rent-order-form');
+    const success = document.getElementById('rent-success');
+
     if (modal) modal.style.display = 'none';
+    if (form) form.style.display = 'block';
+    if (success) success.style.display = 'none';
     document.body.style.overflow = 'auto';
 }
 
 function initPhoneMask() {
     const input = document.getElementById('rent-phone');
     if (!input) return;
+
+    input.addEventListener('focus', () => {
+        if (!input.value) input.value = '+7 ';
+    });
 
     input.addEventListener('input', () => {
         let val = input.value.replace(/\D/g, '');
@@ -74,8 +92,8 @@ function initPhoneMask() {
         if (!val.startsWith('7')) val = '7' + val;
         val = val.slice(0, 11);
 
-        let result = '+7';
-        if (val.length > 1) result += ' (' + val.slice(1, 4);
+        let result = '+7 ';
+        if (val.length > 1) result += '(' + val.slice(1, 4);
         if (val.length >= 4) result += ') ' + val.slice(4, 7);
         if (val.length >= 7) result += '-' + val.slice(7, 9);
         if (val.length >= 9) result += '-' + val.slice(9, 11);
@@ -84,13 +102,9 @@ function initPhoneMask() {
     });
 
     input.addEventListener('keydown', e => {
-        if (e.key === 'Backspace' && input.value.length <= 2) {
+        if (e.key === 'Backspace' && input.value.length <= 3) {
             e.preventDefault();
         }
-    });
-
-    input.addEventListener('focus', () => {
-        if (!input.value) input.value = '+7 ';
     });
 }
 
@@ -105,6 +119,10 @@ function initRentForm() {
         const phone = document.getElementById('rent-phone');
         const nameErr = document.getElementById('rent-name-error');
         const phoneErr = document.getElementById('rent-phone-error');
+        const success = document.getElementById('rent-success');
+
+        if (!name || !phone || !nameErr || !phoneErr || !success) return;
+
         let valid = true;
 
         if (name.value.trim().length < 2) {
@@ -125,7 +143,7 @@ function initRentForm() {
         if (!valid) return;
 
         form.style.display = 'none';
-        document.getElementById('rent-success').style.display = 'block';
+        success.style.display = 'block';
         setTimeout(closeRentModal, 2500);
     });
 }
@@ -133,14 +151,16 @@ function initRentForm() {
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.rent-book-btn').forEach(btn => {
         btn.addEventListener('click', function () {
-            openRentModal(this.dataset.title, this.dataset.price);
+            openRentModal(this.dataset.title || '', this.dataset.price || '');
         });
     });
 
     document.getElementById('rent-modal-close')?.addEventListener('click', closeRentModal);
+
     document.getElementById('rent-modal')?.addEventListener('click', e => {
         if (e.target === e.currentTarget) closeRentModal();
     });
+
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closeRentModal();
     });
