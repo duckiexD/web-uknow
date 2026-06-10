@@ -2,7 +2,6 @@
 import json
 import os
 import sqlite3
-from datetime import datetime
 
 DATABASE_PATH = os.environ.get('DATABASE_PATH', 'database.db')
 

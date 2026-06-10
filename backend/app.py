@@ -1,7 +1,7 @@
-from datetime import datetime
-from pathlib import Path
 import os
 import sys
+from datetime import datetime
+from pathlib import Path
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request, send_from_directory
@@ -153,7 +153,6 @@ def add_comment():
     try:
         data = request.json
 
-        # ВАЛИДАЦИЯ: проверяем, что имя и текст отзыва присутствуют
         if not data.get("name") or not data.get("text"):
             return jsonify({"error": "Name and text are required"}), 400
 
