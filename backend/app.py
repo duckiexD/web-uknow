@@ -158,6 +158,8 @@ def add_comment():
     """Добавить отзыв"""
     try:
         data = request.json
+        
+        # ВАЛИДАЦИЯ: проверяем, что имя и текст отзыва присутствуют
         if not data.get("name") or not data.get("text"):
             return jsonify({"error": "Name and text are required"}), 400
 
