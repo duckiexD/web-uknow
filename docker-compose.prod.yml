@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    container_name: vysota-production
+    ports:
+      - "5000:5000"
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+    env_file:
+      - .env.production
+    volumes:
+      - ./backend/database.db:/app/backend/database.db
+      - ./frontend:/app/frontend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
