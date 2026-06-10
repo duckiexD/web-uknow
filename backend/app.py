@@ -1,9 +1,22 @@
-from flask import Flask, request, jsonify, send_from_directory
-from flask_cors import CORS
-from dotenv import load_dotenv
 import os
 import sys
+from datetime import datetime
 from pathlib import Path
+
+from dotenv import load_dotenv
+from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
+
+from models import (
+    get_comments,
+    get_db,
+    init_db,
+    like_comment,
+    save_comment,
+    save_gym_order,
+    save_order,
+    save_rent_order,
+)
 
 # Загружаем .env из корня проекта
 env_path = Path(__file__).parent.parent / ".env"
@@ -16,25 +29,6 @@ else:
 # Добавляем backend в путь
 backend_path = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, backend_path)
-
-# Импортируем models с обработкой ошибок
-try:
-    from models import (
-        init_db,
-        get_db,
-        save_order,
-        get_comments,
-        save_comment,
-        like_comment,
-        save_gym_order,
-        save_rent_order,
-    )
-
-    print("✅ Модели успешно загружены")
-except Exception as e:
-    print(f"❌ Ошибка импорта models: {e}")
-    print("Проверьте, что файл models.py существует в папке backend")
-    sys.exit(1)
 
 # Создаём приложение
 app = Flask(__name__, static_folder="../frontend", static_url_path="")
@@ -158,10 +152,9 @@ def add_comment():
     """Добавить отзыв"""
     try:
         data = request.json
+
         if not data.get("name") or not data.get("text"):
             return jsonify({"error": "Name and text are required"}), 400
-
-        from datetime import datetime
 
         date = datetime.now().strftime("%d.%m.%Y %H:%M")
 
