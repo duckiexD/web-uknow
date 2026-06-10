@@ -1,0 +1,30 @@
+vysota-production  | ✅ .env загружен из /app/.env
+vysota-production  | ✅ models.py загружен успешно
+vysota-production  | ✅ Модели успешно загружены
+vysota-production  | ✅ База данных инициализирована
+vysota-production  | ✅ Фронтенд найден: /app/frontend
+vysota-production  | 
+vysota-production  | ==================================================
+vysota-production  | 🚀 Футбольная секция «Высота»
+vysota-production  | 📱 Сайт: http://localhost:5000
+vysota-production  | 📡 API: http://localhost:5000/api/products
+vysota-production  | ==================================================
+vysota-production  | 
+vysota-production  | 🟢 Запуск сервера...
+vysota-production  | 🐛 Режим отладки: Включен
+vysota-production  | 🌐 Сервер доступен по адресам:
+vysota-production  |    - http://localhost:5000
+vysota-production  |    - http://127.0.0.1:5000
+vysota-production  | 
+vysota-production  | ⏹️  Для остановки нажмите Ctrl+C
+vysota-production  | 
+vysota-production  |  * Serving Flask app 'app'
+vysota-production  |  * Debug mode: on
+vysota-production  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+vysota-production  |  * Running on all addresses (0.0.0.0)
+vysota-production  |  * Running on http://127.0.0.1:5000
+vysota-production  |  * Running on http://172.18.0.2:5000
+vysota-production  | Press CTRL+C to quit
+vysota-production  |  * Restarting with stat
+vysota-production  |  * Debugger is active!
+vysota-production  |  * Debugger PIN: 203-626-178

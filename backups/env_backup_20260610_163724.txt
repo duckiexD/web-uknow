@@ -1,12 +1,12 @@
 # Flask настройки
-FLASK_APP=backend/app.py
+FLASK_APP=app.py
 FLASK_ENV=development
-SECRET_KEY=your-secret-key-here-change-in-production
+SECRET_KEY=8f42241cc3cd7da1e680407234997414318919eab47bbfdcf90a77d71da61195
 
 # База данных
 DATABASE_PATH=database.db
 
-# CORS настройки
+# CORS настройки (какие домены могут обращаться к API)
 CORS_ORIGINS=http://localhost:5000,http://127.0.0.1:5000
 
 # Режим отладки

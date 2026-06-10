@@ -21,5 +21,13 @@
 4. Запустить сервер: `python backend/app.py`
 5. Открыть в браузере: `http://localhost:5000`
 
+## Быстрый запуск
+
+### Windows (BAT-скрипты)
+```bash
+scripts\setup.bat      # Установка зависимостей
+scripts\run.bat        # Запуск сервера
+```
+
 ## Ссылка на репозиторий
 https://github.com/duckiexD/web-uknow
